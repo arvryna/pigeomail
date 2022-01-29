@@ -16,7 +16,8 @@ func (b *Bot) handleHelpCommand(update *tgbotapi.Update) {
 	msg.Text = `
 
 *Bot commands*
-	/create - Create new email
+	/create - Create new email inbox
+	/send   - Compose a new email
 	/list   - Show your email
 	/delete - Delete your email
 	/help   - Get help message

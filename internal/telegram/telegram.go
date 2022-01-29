@@ -6,11 +6,12 @@ import (
 	"html"
 	"time"
 
+	"pigeomail/internal/repository"
+	"pigeomail/rabbitmq"
+
 	"github.com/go-logr/logr"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/streadway/amqp"
-	"pigeomail/internal/repository"
-	"pigeomail/rabbitmq"
 )
 
 type Bot struct {
@@ -63,6 +64,8 @@ func (b *Bot) handleCommand(update *tgbotapi.Update) {
 	switch update.Message.Command() {
 	case createCommand:
 		b.handleCreateCommandStep1(update)
+	case sendCommand:
+		b.handleSendCommand(update)
 	case listCommand:
 		b.handleListCommand(update)
 	case deleteCommand:
